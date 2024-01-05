@@ -1303,5 +1303,15 @@ var (
 			AllowSelfServe: false,
 			Created:        time.Date(2023, time.December, 18, 12, 0, 0, 0, time.UTC),
 		},
+		{
+			Name:            "alertingPreviewUpgrade",
+			Description:     "Show Unified Alerting preview and upgrade page in legacy alerting",
+			FrontendOnly:    false,
+			Stage:           FeatureStageExperimental,
+			Owner:           grafanaAlertingSquad,
+			HideFromDocs:    true,
+			RequiresRestart: true,
+			Created:         time.Date(2024, time.January, 3, 12, 0, 0, 0, time.UTC),
+		},
 	}
 )
