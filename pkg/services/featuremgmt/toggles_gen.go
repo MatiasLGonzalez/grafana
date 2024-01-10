@@ -630,4 +630,8 @@ const (
 	// FlagCloudRBACRoles
 	// Enabled grafana cloud specific RBAC roles
 	FlagCloudRBACRoles = "cloudRBACRoles"
+
+	// FlagAlertingQueryOptimization
+	// Optimizes eligible queries in order to reduce load on datasources
+	FlagAlertingQueryOptimization = "alertingQueryOptimization"
 )
