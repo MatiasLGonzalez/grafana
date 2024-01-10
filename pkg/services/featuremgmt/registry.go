@@ -1307,5 +1307,14 @@ var (
 			RequiresRestart: true,
 			Created:         time.Date(2024, time.January, 3, 12, 0, 0, 0, time.UTC),
 		},
+		{
+			Name:            "enablePluginsTracingByDefault",
+			Description:     "Enable plugin tracing for all external plugins",
+			FrontendOnly:    false,
+			Stage:           FeatureStageExperimental,
+			Owner:           grafanaPluginsPlatformSquad,
+			RequiresRestart: true,
+			Created:         time.Date(2024, time.January, 9, 12, 0, 0, 0, time.UTC),
+		},
 	}
 )
