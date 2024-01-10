@@ -173,4 +173,5 @@ export interface FeatureToggles {
   lokiQueryHints?: boolean;
   alertingPreviewUpgrade?: boolean;
   enablePluginsTracingByDefault?: boolean;
+  cloudRBACRoles?: boolean;
 }
