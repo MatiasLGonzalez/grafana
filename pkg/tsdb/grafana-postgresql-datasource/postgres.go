@@ -10,6 +10,8 @@ import (
 	"strings"
 	"time"
 
+	_ "github.com/jackc/pgx/v5/stdlib"
+
 	"github.com/grafana/grafana-plugin-sdk-go/backend"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/datasource"
 	"github.com/grafana/grafana-plugin-sdk-go/backend/instancemgmt"
@@ -246,6 +248,44 @@ func (s *Service) CheckHealth(ctx context.Context, req *backend.CheckHealthReque
 
 func (t *postgresQueryResultTransformer) GetConverterList() []sqlutil.StringConverter {
 	return []sqlutil.StringConverter{
+		{
+			Name:           "handle TIME WITH TIME ZONE",
+			InputScanKind:  reflect.Interface,
+			InputTypeName:  "1266",
+			ConversionFunc: func(in *string) (*string, error) { return in, nil },
+			Replacer: &sqlutil.StringFieldReplacer{
+				OutputFieldType: data.FieldTypeNullableTime,
+				ReplaceFunc: func(in *string) (any, error) {
+					if in == nil {
+						return nil, nil
+					}
+					v, err := time.Parse("15:04:05-07", *in)
+					if err != nil {
+						return nil, err
+					}
+					return &v, nil
+				},
+			},
+		},
+		{
+			Name:           "handle TIME",
+			InputScanKind:  reflect.Interface,
+			InputTypeName:  "TIME",
+			ConversionFunc: func(in *string) (*string, error) { return in, nil },
+			Replacer: &sqlutil.StringFieldReplacer{
+				OutputFieldType: data.FieldTypeNullableTime,
+				ReplaceFunc: func(in *string) (any, error) {
+					if in == nil {
+						return nil, nil
+					}
+					v, err := time.Parse("15:04:05", *in)
+					if err != nil {
+						return nil, err
+					}
+					return &v, nil
+				},
+			},
+		},
 		{
 			Name:           "handle FLOAT4",
 			InputScanKind:  reflect.Interface,

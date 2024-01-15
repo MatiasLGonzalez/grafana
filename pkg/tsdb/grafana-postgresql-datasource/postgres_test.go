@@ -18,7 +18,7 @@ import (
 	"github.com/grafana/grafana/pkg/setting"
 	"github.com/grafana/grafana/pkg/tsdb/sqleng"
 
-	_ "github.com/lib/pq"
+	_ "github.com/jackc/pgx/v5/stdlib"
 )
 
 // Test generateConnectionString.
@@ -1385,7 +1385,7 @@ func TestIntegrationPostgres(t *testing.T) {
 
 func InitPostgresTestDB(t *testing.T, jsonData sqleng.JsonData) *sql.DB {
 	connStr := postgresTestDBConnString()
-	db, err := sql.Open("postgres", connStr)
+	db, err := sql.Open("pgx", connStr)
 	require.NoError(t, err, "Failed to init postgres DB")
 
 	db.SetMaxOpenConns(jsonData.MaxOpenConns)

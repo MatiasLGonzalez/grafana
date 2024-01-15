@@ -66,7 +66,7 @@ func TestIntegrationPostgresSnapshots(t *testing.T) {
 		connStr := fmt.Sprintf("user=grafanatest password=grafanatest host=%s port=%s dbname=grafanadstest sslmode=disable",
 			host, port)
 
-		db, err := sql.Open("postgres", connStr)
+		db, err := sql.Open("pgx", connStr)
 		require.NoError(t, err)
 		return db
 	}
