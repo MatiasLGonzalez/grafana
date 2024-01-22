@@ -1364,5 +1364,13 @@ var (
 			RequiresRestart:   true,
 			Created:           time.Date(2024, time.January, 17, 12, 0, 0, 0, time.UTC),
 		},
+		{
+			Name:         "alertingSaveStatePeriodic",
+			Description:  "Writes the state periodically to the database, asynchronous to rule evaluation",
+			Stage:        FeatureStagePrivatePreview,
+			FrontendOnly: false,
+			Owner:        grafanaAlertingSquad,
+			Created:      time.Date(2024, time.January, 22, 12, 0, 0, 0, time.UTC),
+		},
 	}
 )

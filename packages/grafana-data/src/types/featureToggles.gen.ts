@@ -178,4 +178,5 @@ export interface FeatureToggles {
   newFolderPicker?: boolean;
   jitterAlertRules?: boolean;
   jitterAlertRulesWithinGroups?: boolean;
+  alertingSaveStatePeriodic?: boolean;
 }

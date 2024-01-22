@@ -646,4 +646,8 @@ const (
 	// FlagJitterAlertRulesWithinGroups
 	// Distributes alert rule evaluations more evenly over time, including spreading out rules within the same group
 	FlagJitterAlertRulesWithinGroups = "jitterAlertRulesWithinGroups"
+
+	// FlagAlertingSaveStatePeriodic
+	// Writes the state periodically to the database, asynchronous to rule evaluation
+	FlagAlertingSaveStatePeriodic = "alertingSaveStatePeriodic"
 )
