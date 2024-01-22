@@ -3,7 +3,7 @@ import React, { ReactNode, useEffect, useState } from 'react';
 
 import { AbsoluteTimeRange, LogRowModel, TimeRange } from '@grafana/data';
 import { convertRawToRange, isRelativeTime, isRelativeTimeRange } from '@grafana/data/src/datetime/rangeutil';
-import { reportInteraction } from '@grafana/runtime';
+import { config, reportInteraction } from '@grafana/runtime';
 import { LogsSortOrder, TimeZone } from '@grafana/schema';
 import { Spinner } from '@grafana/ui';
 
@@ -47,7 +47,7 @@ export const InfiniteScroll = ({
   }, [loading]);
 
   useEffect(() => {
-    if (!scrollElement || !loadMoreLogs) {
+    if (!scrollElement || !loadMoreLogs || !config.featureToggles.logsInfiniteScrolling) {
       return;
     }
 
